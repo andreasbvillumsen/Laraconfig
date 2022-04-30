@@ -1,9 +1,9 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Migrator\Pipes;
+namespace andreasbvillumsen\Laraconfig\Migrator\Pipes;
 
 use Closure;
-use DarkGhostHunter\Laraconfig\Migrator\Data;
+use andreasbvillumsen\Laraconfig\Migrator\Data;
 use RuntimeException;
 
 /**
@@ -14,8 +14,8 @@ class EnsureFromTargetsExist
     /**
      * Handles the Settings migration.
      *
-     * @param  \DarkGhostHunter\Laraconfig\Migrator\Data  $data
-     * @param  \Closure  $next
+     * @param Data $data
+     * @param Closure $next
      *
      * @return mixed
      */

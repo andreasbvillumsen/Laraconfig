@@ -1,11 +1,11 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Migrator\Pipes;
+namespace andreasbvillumsen\Laraconfig\Migrator\Pipes;
 
 use Closure;
-use DarkGhostHunter\Laraconfig\Eloquent\Metadata;
-use DarkGhostHunter\Laraconfig\Eloquent\Setting;
-use DarkGhostHunter\Laraconfig\Migrator\Data;
+use andreasbvillumsen\Laraconfig\Eloquent\Metadata;
+use andreasbvillumsen\Laraconfig\Eloquent\Setting;
+use andreasbvillumsen\Laraconfig\Migrator\Data;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Collection;
@@ -20,9 +20,9 @@ class ConfirmSettingsRefresh
     /**
      * ConfirmSettingsToDelete constructor.
      *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
-     * @param  \Illuminate\Console\OutputStyle  $output
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
+     * @param Application $app
+     * @param OutputStyle $output
+     * @param InputInterface $input
      */
     public function __construct(
         protected Application $app,
@@ -34,7 +34,7 @@ class ConfirmSettingsRefresh
     /**
      * Handles the Settings migration.
      *
-     * @param  \DarkGhostHunter\Laraconfig\Migrator\Data  $data
+     * @param Data $data
      * @param  \Closure  $next
      *
      * @return mixed

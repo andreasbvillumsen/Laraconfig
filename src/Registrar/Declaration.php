@@ -1,9 +1,9 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Registrar;
+namespace andreasbvillumsen\Laraconfig\Registrar;
 
 use Closure;
-use DarkGhostHunter\Laraconfig\Eloquent\Metadata;
+use andreasbvillumsen\Laraconfig\Eloquent\Metadata;
 
 class Declaration
 {
@@ -240,7 +240,7 @@ class Declaration
     /**
      * Transforms the Declaration to a Metadata Model.
      *
-     * @return \DarkGhostHunter\Laraconfig\Eloquent\Metadata
+     * @return Metadata
      */
     public function toMetadata(): Metadata
     {

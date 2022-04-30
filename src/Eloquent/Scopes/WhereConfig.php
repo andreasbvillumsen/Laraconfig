@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Eloquent\Scopes;
+namespace andreasbvillumsen\Laraconfig\Eloquent\Scopes;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -11,8 +11,8 @@ class WhereConfig implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param Builder $builder
+     * @param Model $model
      *
      * @return void
      */
@@ -24,7 +24,7 @@ class WhereConfig implements Scope
     /**
      * Extend the query builder with the needed functions.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param Builder $builder
      *
      * @return void
      */
@@ -37,13 +37,13 @@ class WhereConfig implements Scope
     /**
      * Filters the user by the config value.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param Builder $builder
      * @param  string|array  $name
      * @param  string|null  $operator
      * @param  null  $value
      * @param  string  $boolean
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public static function whereConfig(
         Builder $builder,
@@ -84,12 +84,12 @@ class WhereConfig implements Scope
     /**
      * Filters the user by the config value.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
-     * @param  string|array  $name
-     * @param  string|null  $operator
-     * @param  null  $value
+     * @param Builder $builder
+     * @param string|array  $name
+     * @param string|null  $operator
+     * @param null  $value
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public static function orWhereConfig(
         Builder $builder,

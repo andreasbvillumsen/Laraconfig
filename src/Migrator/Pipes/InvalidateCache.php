@@ -1,11 +1,11 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Migrator\Pipes;
+namespace andreasbvillumsen\Laraconfig\Migrator\Pipes;
 
 use Closure;
-use DarkGhostHunter\Laraconfig\Laraconfig;
-use DarkGhostHunter\Laraconfig\Migrator\Data;
-use DarkGhostHunter\Laraconfig\MorphManySettings;
+use andreasbvillumsen\Laraconfig\Laraconfig;
+use andreasbvillumsen\Laraconfig\Migrator\Data;
+use andreasbvillumsen\Laraconfig\MorphManySettings;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Contracts\Config\Repository;
@@ -18,10 +18,10 @@ class InvalidateCache
     /**
      * RemoveOldMetadata constructor.
      *
-     * @param  \Illuminate\Contracts\Config\Repository  $config
-     * @param  \Illuminate\Console\OutputStyle  $output
-     * @param  \Illuminate\Contracts\Cache\Factory  $cache
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
+     * @param Repository $config
+     * @param OutputStyle $output
+     * @param Factory $cache
+     * @param InputInterface $input
      */
     public function __construct(
         protected Repository $config,
@@ -34,8 +34,8 @@ class InvalidateCache
     /**
      * Handles the Settings migration.
      *
-     * @param  \DarkGhostHunter\Laraconfig\Migrator\Data  $data
-     * @param  \Closure  $next
+     * @param Data $data
+     * @param Closure $next
      *
      * @return mixed
      */
@@ -57,7 +57,7 @@ class InvalidateCache
     /**
      * Check if we should cycle through models to invalidate their keys.
      *
-     * @param  \DarkGhostHunter\Laraconfig\Migrator\Data  $data
+     * @param Data $data
      *
      * @return bool
      */
@@ -71,8 +71,7 @@ class InvalidateCache
     /**
      * Forget model cache keys.
      *
-     * @param  \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model[]  $models
-     *
+     * @param Data $data
      * @return int
      */
     protected function forgetModelCacheKeys(Data $data): int
@@ -103,7 +102,8 @@ class InvalidateCache
     /**
      * Returns a query to retrieve all settings distinct by type and id.
      *
-     * @return \Illuminate\Support\LazyCollection|\stdClass[]
+     * @param Model $settable
+     * @return LazyCollection
      */
     protected function querySettable(Model $settable): LazyCollection
     {

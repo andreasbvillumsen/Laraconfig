@@ -1,13 +1,15 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Facades;
+namespace andreasbvillumsen\Laraconfig\Facades;
 
-use DarkGhostHunter\Laraconfig\Registrar\SettingRegistrar;
+use andreasbvillumsen\Laraconfig\Registrar\Declaration;
+use andreasbvillumsen\Laraconfig\Registrar\SettingRegistrar;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \Illuminate\Support\Collection|\DarkGhostHunter\Laraconfig\Eloquent\Setting[] getSettings()
- * @method static \DarkGhostHunter\Laraconfig\Registrar\Declaration name(string $name)
+ * @method static Collection|\andreasbvillumsen\Laraconfig\Eloquent\Setting[] getSettings()
+ * @method static Declaration name(string $name)
  */
 class Setting extends Facade
 {

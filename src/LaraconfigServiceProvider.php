@@ -1,8 +1,8 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig;
+namespace andreasbvillumsen\Laraconfig;
 
-use DarkGhostHunter\Laraconfig\Registrar\SettingRegistrar;
+use andreasbvillumsen\Laraconfig\Registrar\SettingRegistrar;
 use Generator;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;

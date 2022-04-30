@@ -1,10 +1,10 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Migrator\Pipes;
+namespace andreasbvillumsen\Laraconfig\Migrator\Pipes;
 
 use Closure;
-use DarkGhostHunter\Laraconfig\Eloquent\Metadata;
-use DarkGhostHunter\Laraconfig\Migrator\Data;
+use andreasbvillumsen\Laraconfig\Eloquent\Metadata;
+use andreasbvillumsen\Laraconfig\Migrator\Data;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -16,7 +16,7 @@ class RemoveOldMetadata
     /**
      * RemoveOldMetadata constructor.
      *
-     * @param  \Illuminate\Console\OutputStyle  $output
+     * @param OutputStyle $output
      */
     public function __construct(protected OutputStyle $output)
     {
@@ -25,8 +25,8 @@ class RemoveOldMetadata
     /**
      * Handles the Settings migration.
      *
-     * @param  \DarkGhostHunter\Laraconfig\Migrator\Data  $data
-     * @param  \Closure  $next
+     * @param Data $data
+     * @param Closure $next
      *
      * @return mixed
      */
@@ -52,9 +52,9 @@ class RemoveOldMetadata
     /**
      * Returns a collection of Metadata not present in the manifest.
      *
-     * @param  \DarkGhostHunter\Laraconfig\Migrator\Data  $data
+     * @param Data $data
      *
-     * @return \Illuminate\Database\Eloquent\Collection|\DarkGhostHunter\Laraconfig\Eloquent\Metadata[]
+     * @return Collection
      */
     protected function toDelete(Data $data): Collection
     {

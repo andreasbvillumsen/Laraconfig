@@ -2,15 +2,16 @@
 
 namespace Tests;
 
-use DarkGhostHunter\Laraconfig\LaraconfigServiceProvider;
-use DarkGhostHunter\Laraconfig\Facades\Setting;
+use andreasbvillumsen\Laraconfig\LaraconfigServiceProvider;
+use andreasbvillumsen\Laraconfig\Facades\Setting;
+use Illuminate\Foundation\Application;
 
 trait RegistersPackage
 {
     /**
      * Get package providers.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      *
      * @return array
      */
@@ -24,7 +25,7 @@ trait RegistersPackage
     /**
      * Override application aliases.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      *
      * @return array
      */

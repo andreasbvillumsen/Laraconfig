@@ -1,8 +1,8 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig;
+namespace andreasbvillumsen\Laraconfig;
 
-use DarkGhostHunter\Laraconfig\Eloquent\Metadata;
+use andreasbvillumsen\Laraconfig\Eloquent\Metadata;
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -12,7 +12,7 @@ use Illuminate\Support\Arr;
 
 /**
  * @mixin \Illuminate\Database\Eloquent\Builder
- * @mixin \DarkGhostHunter\Laraconfig\Eloquent\Setting
+ * @mixin \andreasbvillumsen\Laraconfig\Eloquent\Setting
  *
  * @method Model|HasConfig getParent()
  */
@@ -28,7 +28,7 @@ class MorphManySettings extends MorphMany
     /**
      * The settings cache helper.
      *
-     * @var \DarkGhostHunter\Laraconfig\SettingsCache|null
+     * @var \andreasbvillumsen\Laraconfig\SettingsCache|null
      */
     protected ?SettingsCache $cache = null;
 

@@ -1,23 +1,25 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig;
+namespace andreasbvillumsen\Laraconfig;
 
+use andreasbvillumsen\Laraconfig\Eloquent\Setting;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 use function method_exists;
 
 /**
- * @property-read \DarkGhostHunter\Laraconfig\SettingsCollection<\DarkGhostHunter\Laraconfig\Eloquent\Setting>|\DarkGhostHunter\Laraconfig\Eloquent\Setting[] $settings
+ * @property-read SettingsCollection|Setting[] $settings
  *
- * @method \Illuminate\Database\Eloquent\Builder|static whereConfig(string|array $name, string $operator = null, $value = null, string $boolean = 'and')
- * @method \Illuminate\Database\Eloquent\Builder|static orWhereConfig(string|array $name, string $operator = null, $value = null)
+ * @method Builder|static whereConfig(string|array $name, string $operator = null, $value = null, string $boolean = 'and')
+ * @method Builder|static orWhereConfig(string|array $name, string $operator = null, $value = null)
  */
 trait HasConfig
 {
     /**
      * Returns the settings relationship.
      *
-     * @return \DarkGhostHunter\Laraconfig\MorphManySettings
+     * @return \andreasbvillumsen\Laraconfig\MorphManySettings
      */
     public function settings(): MorphManySettings
     {

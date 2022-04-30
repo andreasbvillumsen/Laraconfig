@@ -1,19 +1,20 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig;
+namespace andreasbvillumsen\Laraconfig;
 
-use DarkGhostHunter\Laraconfig\Eloquent\Setting;
+use andreasbvillumsen\Laraconfig\Eloquent\Setting;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Enumerable;
 use Illuminate\Support\Traits\EnumeratesValues;
+use Psr\SimpleCache\InvalidArgumentException;
 use RuntimeException;
 
 /**
  * Class SettingsCollection
  *
- * @package DarkGhostHunter\Laraconfig
+ * @package andreasbvillumsen\Laraconfig
  *
  * @method Setting get(string $name, mixed $default = null)
  */
@@ -29,7 +30,7 @@ class SettingsCollection extends Collection
      * is garbage collected. Once done, a `__destruct()` call will be fired, and
      * that is when we will make the cache store regenerate the settings there.
      *
-     * @var \DarkGhostHunter\Laraconfig\SettingsCache|null
+     * @var SettingsCache|null
      */
     public ?SettingsCache $cache = null;
 
@@ -43,7 +44,7 @@ class SettingsCollection extends Collection
     /**
      * Returns all the settings grouped by their group name.
      *
-     * @return static|\DarkGhostHunter\Laraconfig\Eloquent\Setting[]
+     * @return SettingsCollection
      */
     public function groups(): static
     {
@@ -56,7 +57,7 @@ class SettingsCollection extends Collection
      * @param  string  $name
      * @param  mixed|null  $default
      *
-     * @return \Illuminate\Support\Carbon|\Illuminate\Support\Collection|array|string|int|float|bool|null
+     * @return Carbon|\Illuminate\Support\Collection|array|string|int|float|bool|null
      */
     public function value(string $name, mixed $default = null): Carbon|Collection|array|string|int|float|bool|null
     {
@@ -265,9 +266,10 @@ class SettingsCollection extends Collection
     /**
      * Saves the collection of settings in the cache.
      *
-     * @param  bool  $force
+     * @param bool $force
      *
      * @return void
+     * @throws InvalidArgumentException
      */
     public function regenerate(bool $force = false): void
     {
@@ -278,6 +280,7 @@ class SettingsCollection extends Collection
      * Handle the destruction of the settings collection.
      *
      * @return void
+     * @throws InvalidArgumentException
      */
     public function __destruct()
     {

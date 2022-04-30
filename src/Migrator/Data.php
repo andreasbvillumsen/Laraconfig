@@ -1,8 +1,10 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig\Migrator;
+namespace andreasbvillumsen\Laraconfig\Migrator;
 
+use andreasbvillumsen\Laraconfig\Registrar\Declaration;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
@@ -13,23 +15,23 @@ class Data
     /**
      * Database Metadata.
      *
-     * @var \Illuminate\Database\Eloquent\Collection|\DarkGhostHunter\Laraconfig\Eloquent\Metadata[]
+     * @var \andreasbvillumsen\Laraconfig\Eloquent\Metadata[]|EloquentCollection
      */
-    public EloquentCollection $metadata;
+    public EloquentCollection|array $metadata;
 
     /**
      * Declarations.
      *
-     * @var \Illuminate\Support\Collection|\DarkGhostHunter\Laraconfig\Registrar\Declaration[]
+     * @var Collection|Declaration[]
      */
-    public Collection $declarations;
+    public Collection|array $declarations;
 
     /**
      * Models to check for bags.
      *
-     * @var \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model[]
+     * @var Collection|Model[]
      */
-    public Collection $models;
+    public Collection|array $models;
 
     /**
      * If the cache should be invalidated on settings changes.

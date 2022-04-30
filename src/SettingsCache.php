@@ -1,6 +1,6 @@
 <?php
 
-namespace DarkGhostHunter\Laraconfig;
+namespace andreasbvillumsen\Laraconfig;
 
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Contracts\Cache\Repository;
@@ -8,6 +8,7 @@ use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Psr\SimpleCache\InvalidArgumentException;
 use Serializable;
 
 class SettingsCache implements Serializable
@@ -15,21 +16,21 @@ class SettingsCache implements Serializable
     /**
      * The collection of settings to persist.
      *
-     * @var \DarkGhostHunter\Laraconfig\SettingsCollection|null
+     * @var SettingsCollection|null
      */
     protected ?SettingsCollection $settings = null;
 
     /**
      * If the cache was already invalidated (to not do it again).
      *
-     * @var \Illuminate\Support\Carbon|null
+     * @var Carbon|null
      */
     protected ?Carbon $invalidatedAt = null;
 
     /**
      * SettingsCache constructor.
      *
-     * @param  \Illuminate\Contracts\Cache\Repository  $cache
+     * @param Repository $cache
      * @param  string  $key
      * @param  int  $ttl
      * @param  bool  $automaticRegeneration
@@ -45,9 +46,9 @@ class SettingsCache implements Serializable
     /**
      * Set the settings collection to persist.
      *
-     * @param  \DarkGhostHunter\Laraconfig\SettingsCollection  $settings
+     * @param SettingsCollection $settings
      *
-     * @return \DarkGhostHunter\Laraconfig\SettingsCache
+     * @return SettingsCache
      */
     public function setSettings(SettingsCollection $settings): static
     {
@@ -59,7 +60,8 @@ class SettingsCache implements Serializable
     /**
      * Returns the collection in the cache, if it exists.
      *
-     * @return \Illuminate\Database\Eloquent\Collection|null
+     * @return Collection|null
+     * @throws InvalidArgumentException
      */
     public function retrieve(): ?Collection
     {
@@ -70,6 +72,7 @@ class SettingsCache implements Serializable
      * Check if the cache of the settings not is older these settings.
      *
      * @return bool
+     * @throws InvalidArgumentException
      */
     public function shouldRegenerate(): bool
     {
@@ -85,9 +88,10 @@ class SettingsCache implements Serializable
     /**
      * Saves the collection of settings in the cache.
      *
-     * @param  bool  $force
+     * @param bool $force
      *
      * @return void
+     * @throws InvalidArgumentException
      */
     public function regenerate(bool $force = false): void
     {
@@ -135,7 +139,7 @@ class SettingsCache implements Serializable
         // Just a simple trick to regenerate only if it's enabled.
         $this->settings->regeneratesOnExit = $this->automaticRegeneration;
     }
-    
+
     /**
      * representation of object.
      *
@@ -183,9 +187,9 @@ class SettingsCache implements Serializable
     /**
      * Creates a new instance.
      *
-     * @param  \Illuminate\Contracts\Config\Repository  $config
-     * @param  \Illuminate\Contracts\Cache\Factory  $factory
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param Config $config
+     * @param Factory $factory
+     * @param Model $model
      *
      * @return static
      */
