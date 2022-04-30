@@ -1,4 +1,4 @@
-This package is forked, due to the original creator no longer maintaining it.
+This package is forked and updated to support Laravel 9, due to the original creator no longer maintaining it.
 
 ---
 
