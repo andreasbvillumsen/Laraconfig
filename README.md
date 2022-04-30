@@ -1,14 +1,10 @@
-This package has been archived.
-
-Sorry guys and gals, I bit more than I can chew and I'm currently not using this package to justify its support.
-
-I may revisit this in the near future.
+This package is forked, due to the original creator no longer maintaining it.
 
 ---
 
 ![Xavier von Erlach - Unsplash #ooR1jY2yFr4](https://images.unsplash.com/photo-1570221622224-3bb8f08f166c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=400&q=80)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/darkghosthunter/laraconfig.svg)](https://packagist.org/packages/darkghosthunter/laraconfig) [![License](https://poser.pugx.org/darkghosthunter/laraconfig/license)](https://packagist.org/packages/darkghosthunter/laraconfig) ![](https://img.shields.io/packagist/php-v/darkghosthunter/laraconfig.svg) ![](https://github.com/DarkGhostHunter/Laraconfig/workflows/PHP%20Composer/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/DarkGhostHunter/Laraconfig/badge.svg?branch=master)](https://coveralls.io/github/DarkGhostHunter/Laraconfig?branch=master) [![Laravel Octane Compatible](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://github.com/laravel/octane)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/andreasbvillumsen/laraconfig.svg)](https://packagist.org/packages/andreasbvillumsen/laraconfig) [![License](https://poser.pugx.org/darkghosthunter/laraconfig/license)](https://packagist.org/packages/andreasbvillumsen/laraconfig) ![](https://img.shields.io/packagist/php-v/andreasbvillumsen/laraconfig.svg) ![](https://github.com/andreasbvillumsen/Laraconfig/workflows/PHP%20Composer/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/andreasbvillumsen/Laraconfig/badge.svg?branch=master)](https://coveralls.io/github/andreasbvillumsen/Laraconfig?branch=master) [![Laravel Octane Compatible](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://github.com/laravel/octane)
 
 # Laraconfig
 
@@ -37,11 +33,11 @@ Since Laraconfig uses the Eloquent ORM behind the scenes, getting a one or all s
 
 You can install the package via composer.
 
-    composer require darkghosthunter/laraconfig
+    composer require andreasbvillumsen/laraconfig
 
 First, publish and run the migrations. These will add two tables called `user_settings` and `user_settings_metadata`. One holds the values per user, the other the metadata of the setting, respectively.
 
-    php artisan vendor:publish --provider="DarkGhostHunter\Laraconfig\LaraconfigServiceProvider" --tag="migrations"
+    php artisan vendor:publish --provider="andreasbvillumsen\Laraconfig\LaraconfigServiceProvider" --tag="migrations"
     php artisan migrate
 
 > The migration uses a morph column to connect to the User. You can change it before migrating.
@@ -52,7 +48,7 @@ Second, add the `HasConfig` trait to the User models you want to have settings.
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use DarkGhostHunter\Laraconfig\HasConfig;
+use andreasbvillumsen\Laraconfig\HasConfig;
 
 class User extends Authenticatable
 {
@@ -73,7 +69,7 @@ Now, let's create some settings.
 Laraconfig makes managing user settings globally using a _manifest_ of sorts, the `settings/users.php` file. You will see a sample setting already written.
 
 ```php
-use DarkGhostHunter\Laraconfig\Facades\Setting;
+use andreasbvillumsen\Laraconfig\Facades\Setting;
 
 Setting::name('color')->string();
 ```
@@ -83,7 +79,7 @@ Setting::name('color')->string();
 To create a setting, use the `Setting` facade. You can start with setting the name, which must be unique, and then declare the type.
 
 ```php
-use DarkGhostHunter\Laraconfig\Facades\Setting;
+use andreasbvillumsen\Laraconfig\Facades\Setting;
 
 Setting::name('dark_mode')->boolean();
 ```
@@ -105,7 +101,7 @@ Laraconfig is compatible with 7 types of settings, mirroring their PHP native ty
 All settings have a default value of `null`, but you can use the `default()` method to set a different initial value.
 
 ```php
-use DarkGhostHunter\Laraconfig\Facades\Setting;
+use andreasbvillumsen\Laraconfig\Facades\Setting;
 
 Setting::name('color')->string()->default('black');
 ```
@@ -160,7 +156,7 @@ Behind the scenes, Laraconfig will look into your Models for those using the `Ha
 Simply create a new setting and run `settings:migrate`. Existing settings won't be created again, as Laraconfig will check their existence before doing it.
 
 ```php
-use DarkGhostHunter\Laraconfig\Facades\Setting;
+use andreasbvillumsen\Laraconfig\Facades\Setting;
 
 Setting::name('color')->string()->default('black');
 
@@ -173,7 +169,7 @@ Setting::name('notifications')->boolean()->default(true);
 To remove old settings, simply remove their declaration and run `settings:migrate`. Laraconfig compares the settings declared to the ones created in the database, and removes those that no longer exist in the manifest at the end of the migration execution.
 
 ```php
-use DarkGhostHunter\Laraconfig\Facades\Setting;
+use andreasbvillumsen\Laraconfig\Facades\Setting;
 
 // Commenting this line will remove the "color" setting on migration.
 // Setting::name('color')->string()->default('black');
@@ -453,7 +449,7 @@ Laraconfig applies a query filter to exclude the settings not in the model bag. 
 There are two ways to disable the bag filter. The first one is relatively easy: simply use the `withoutGlobalScope()` at query time, which will allow to query all the settings available to the user.
 
 ```php
-use DarkGhostHunter\Laraconfig\Eloquent\Scopes\FilterBags;
+use andreasbvillumsen\Laraconfig\Eloquent\Scopes\FilterBags;
 
 $allSettings = $user->settings()->withoutGlobalScope(FilterBags::class)->get();
 ```
