@@ -1,58 +1,58 @@
 {
-  "name": "andreasbvillumsen/laraconfig",
-  "description": "Per-user settings repository system for Laravel",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Italo Baeza C.",
-      "email": "darkghosthunter@gmail.com"
+    "name": "andreasbvillumsen/laraconfig",
+    "description": "Per-user settings repository system for Laravel",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Italo Baeza C.",
+            "email": "darkghosthunter@gmail.com"
+        },
+        {
+            "name": "Andreas Villumsen",
+            "email": "andreasbendorff@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "illuminate/database": "^9.2|^10.0",
+        "illuminate/support": "^9.2|^10.0",
+        "illuminate/collections": "^9.2|^10.0",
+        "illuminate/config": "^9.2|^10.0",
+        "illuminate/cache": "^9.2|^10.0",
+        "symfony/console": "^6.0.3"
     },
-    {
-      "name": "Andreas Villumsen",
-      "email": "andreasbendorff@gmail.com"
+    "require-dev": {
+        "mockery/mockery": "^1.4.3",
+        "orchestra/testbench": "^7.4.0",
+        "phpunit/phpunit": "^9.5.4"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "andreasbvillumsen\\Laraconfig\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "andreasbvillumsen\\Laraconfig\\LaraconfigServiceProvider"
+            ],
+            "aliases": {
+                "Setting": "andreasbvillumsen\\Laraconfig\\Facades\\Setting"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --coverage-clover build/logs/clover.xml",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
     }
-  ],
-  "require": {
-    "php": ">=8.0",
-    "illuminate/database": "^9.2",
-    "illuminate/support": "^9.2",
-    "illuminate/collections": "^9.2",
-    "illuminate/config": "^9.2",
-    "illuminate/cache": "^9.2",
-    "symfony/console": "^6.0.3"
-  },
-  "require-dev": {
-    "mockery/mockery": "^1.4.3",
-    "orchestra/testbench": "^7.4.0",
-    "phpunit/phpunit": "^9.5.4"
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests"
-    }
-  },
-  "autoload": {
-    "psr-4": {
-      "andreasbvillumsen\\Laraconfig\\": "src"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "andreasbvillumsen\\Laraconfig\\LaraconfigServiceProvider"
-      ],
-      "aliases": {
-        "Setting": "andreasbvillumsen\\Laraconfig\\Facades\\Setting"
-      }
-    }
-  },
-  "scripts": {
-    "test": "vendor/bin/phpunit --coverage-clover build/logs/clover.xml",
-    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-  },
-  "config": {
-    "sort-packages": true
-  }
 }
